@@ -10,12 +10,13 @@
         <title>ICEfaces 2</title>
         <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
     </h:head>
-    <h:body styleClass="ice-skin-rime">    
-             <h:form id="form">
-                <h:outputText value="login"/><h:inputText value="#{autenticador.login}"/><br />
-                <h:outputText value="senha"/><h:inputText value="#{autenticador.senha}"/><br />
-                <h:commandButton value="Enviar"></h:commandButton>
-             </h:form>
+    <h:body styleClass="ice-skin-rime">
+    	<h:outputText value="#{autenticador.msg}"/>	    
+		<h:form id="form">
+		   <h:outputText value="login"/><h:inputText requiredMessage="Login obrigatorio" value="#{autenticador.login}" required="true"/><br />
+		   <h:outputText value="senha"/><h:inputSecret requiredMessage="Senha obrigatorio" value="#{autenticador.senha}" required="true"/><br />
+		   <h:commandButton value="Enviar" action="#{autenticador.logar}"/>
+		</h:form>
     </h:body>
     <h:outputStylesheet library="org.icefaces.component.skins" name="rime.css" />
 </html>

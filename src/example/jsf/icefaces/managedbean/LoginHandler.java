@@ -6,6 +6,8 @@ public class LoginHandler {
 	
 	private String senha;
 
+	private String msg;
+	
 	public String getLogin() {
 		return login;
 	}
@@ -21,5 +23,24 @@ public class LoginHandler {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public String logar() {
+		if(login.equals("admin") && senha.equals("123")) {
+			System.out.println("login com sucesso");
+			return "success";
+		} else {
+			System.out.println("falha no login");
+			setMsg("Usuario ou Senha invalidos");
+			return "failure";
+		}
 	}
 }

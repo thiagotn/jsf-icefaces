@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"  xmlns:ace="http://www.icefaces.org/icefaces/components"   xmlns:ice="http://www.icesoft.com/icefaces/component" 
+	>
+    <h:head>
+        <title>ICEfaces 2</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+    <h:body styleClass="ice-skin-rime">
+    Bem vindo <h:outputText value="#{autenticador.login}"/>!    
+             <h:form id="form">
+    			nome: <h:inputText required="true" requiredMessage="Nome obrigatorio" value="#{FornecedorHandler.fornecedor.nome}" /><br />
+    			descricao: <h:inputTextarea required="true" requiredMessage="Descricao obrigatorio" value="#{FornecedorHandler.fornecedor.descricao}" /><br />
+    			<h:commandButton value="cadastrar" action="#{FornecedorHandler.salva}" />            
+             </h:form>
+             <h:form>
+             	<h:dataTable rendered="#{not empty FornecedorHandler.fornecedores}" border="1" var="f" value="#{FornecedorHandler.fornecedores}">
+             		<h:column>
+             			<f:facet name="header">
+             				<h:outputText value="id"/>
+             			</f:facet>
+             			<h:outputText value="#{f.id}"/>
+             		</h:column>
+             		<h:column>
+             			<f:facet name="header">
+             				<h:outputText value="nome"/>
+             			</f:facet>
+             			<h:outputText value="#{f.nome}"/>
+             		</h:column>
+             		<h:column>
+             			<f:facet name="header">
+             				<h:outputText value="descricao"/>
+             			</f:facet>
+             			<h:outputText value="#{f.descricao}"/>
+             		</h:column>
+             		<h:column>
+             			<f:facet name="header">
+             				<h:outputText value="alterar"/>
+             			</f:facet>
+             			<h:commandLink actionListener="#{FornecedorHandler.escolheFornecedor}">
+             				<h:outputText value="alterar">
+             					<f:param id="editId" name="id" value="#{f.id}"/>	
+             				</h:outputText>
+             			</h:commandLink>
+             		</h:column>
+             	</h:dataTable>
+             </h:form>
+    </h:body>
+    <h:outputStylesheet library="org.icefaces.component.skins" name="rime.css" />
+</html>
